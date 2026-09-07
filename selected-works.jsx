@@ -3,8 +3,8 @@ const SW_PROJECTS = [
 {
   id: 'tropfin',
   logo: 'assets/logo-tropfin.png',
-  hero: 'assets/tropfin-hero.png',
-  gallery: ['assets/tropfin-01.png', 'assets/tropfin-07.png', 'assets/tropfin-09.png', 'assets/tropfin-10.png', 'assets/tropfin-08.png', 'assets/tropfin-11.png', 'assets/tropfin-06.png', 'assets/tropfin-05.png', 'assets/tropfin-12.png'],
+  hero: 'assets/tropfin-hero.jpg',
+  gallery: ['assets/tropfin-01.jpg', 'assets/tropfin-07.jpg', 'assets/tropfin-09.jpg', 'assets/tropfin-10.jpg', 'assets/tropfin-08.jpg', 'assets/tropfin-11.jpg', 'assets/tropfin-06.jpg', 'assets/tropfin-05.jpg', 'assets/tropfin-12.jpg'],
   num: '01',
   title: 'Tropfin',
   kicker: 'Product — Design Systems & Platform UI',
@@ -22,9 +22,9 @@ const SW_PROJECTS = [
 {
   id: 'carbon-wallet',
   logo: 'assets/logo-vekin.png',
-  hero: 'assets/carbon-wallet-hero.png',
+  hero: 'assets/carbon-wallet-hero.jpg',
   gallery: ['assets/vekin-01.jpg', 'assets/vekin-02.jpg', 'assets/vekin-03.jpg', 'assets/vekin-04.jpg', 'assets/vekin-05.jpg', 'assets/vekin-06.jpg', 'assets/vekin-07.jpg', 'assets/vekin-08.jpg', 'assets/vekin-09.jpg', 'assets/vekin-10.jpg', 'assets/vekin-11.jpg', 'assets/vekin-12.jpg', 'assets/vekin-13.jpg', 'assets/vekin-14.jpg', 'assets/vekin-15.jpg', 'assets/vekin-16.jpg'],
-  gallery2: ['assets/carbon-wallet-01.png', 'assets/carbon-wallet-02.png', 'assets/carbon-wallet-03.png', 'assets/carbon-wallet-04.png', 'assets/carbon-wallet-05.png'],
+  gallery2: ['assets/carbon-wallet-01.jpg', 'assets/carbon-wallet-02.jpg', 'assets/carbon-wallet-03.jpg', 'assets/carbon-wallet-04.jpg', 'assets/carbon-wallet-05.jpg'],
   num: '02',
   title: 'Carbon Wallet',
   kicker: 'Mobile Application — UX/UI Designer · Team of 3',
@@ -91,8 +91,8 @@ const SW_PROJECTS = [
   id: 'gistda-suvarnabhumi',
   logo: 'assets/logo-gistda.png',
   hero: 'assets/gistda-hero.jpg',
-  heroGallery: ['assets/gistda-hero.jpg', 'assets/gistda-hero-02.png', 'assets/gistda-hero-03.png', 'assets/gistda-hero-04.png', 'assets/gistda-hero-05.jpg', 'assets/gistda-hero-06.jpg', 'assets/gistda-hero-07.jpg', 'assets/gistda-hero-08.jpg', 'assets/gistda-hero-09.jpg', 'assets/gistda-hero-10.png', 'assets/gistda-hero-11.png', 'assets/gistda-hero-12.jpg', 'assets/gistda-hero-13.jpg', 'assets/gistda-hero-14.jpg'],
-  gallery: ['assets/gistda-wps-01.png', 'assets/gistda-wps-02.jpg'],
+  heroGallery: ['assets/gistda-hero.jpg', 'assets/gistda-hero-02.jpg', 'assets/gistda-hero-03.jpg', 'assets/gistda-hero-04.jpg', 'assets/gistda-hero-05.jpg', 'assets/gistda-hero-06.jpg', 'assets/gistda-hero-07.jpg', 'assets/gistda-hero-08.jpg', 'assets/gistda-hero-09.jpg', 'assets/gistda-hero-10.jpg', 'assets/gistda-hero-11.jpg', 'assets/gistda-hero-12.jpg', 'assets/gistda-hero-13.jpg', 'assets/gistda-hero-14.jpg'],
+  gallery: ['assets/gistda-wps-01.jpg', 'assets/gistda-wps-02.jpg'],
   galleryInline: true,
   midImage: 'assets/gistda-flow.jpg',
   num: '05',
@@ -157,7 +157,7 @@ const SW_PROJECTS = [
 {
   id: 'mcd-uniform',
   logo: 'assets/logo-mcd.png',
-  hero: 'assets/mcd-hero.png',
+  hero: 'assets/mcd-hero.jpg',
   gallery: ['assets/mcd-01.jpg', 'assets/mcd-02.jpg', 'assets/mcd-03.jpg', 'assets/mcd-04.jpg', 'assets/mcd-05.jpg'],
   galleryInline: true,
   num: '08',
@@ -197,7 +197,7 @@ const SW_PROJECTS = [
 {
   id: 'grabfood-msize',
   logo: 'assets/logo-grab.png',
-  hero: 'assets/grab-hero.png',
+  hero: 'assets/grab-hero.jpg',
   footer: 'assets/grab-footer.png',
   num: '10',
   title: 'GrabFood — M-size Campaign',
@@ -216,7 +216,7 @@ const SW_PROJECTS = [
 },
 {
   id: 'gmm-grammy',
-  hero: 'assets/gmm-hero.png',
+  hero: 'assets/gmm-hero.jpg',
   videoAboveGallery: 'https://video.wixstatic.com/video/f86e21_35488ec0e8e3450e9d1be96906f0b713/1080p/mp4/file.mp4',
   gallery: ['assets/gmm-06.avif', 'assets/gmm-01.avif', 'assets/gmm-02.avif', 'assets/gmm-03.avif', 'assets/gmm-04.avif', 'assets/gmm-05.avif', 'assets/gmm-07.avif', 'assets/gmm-08.avif', 'assets/gmm-09.avif', 'assets/gmm-10.avif', 'assets/gmm-11.avif'],
   galleryInline: true,
@@ -242,7 +242,7 @@ const SW_PROJECTS = [
 },
 {
   id: 'astroscopeth',
-  hero: 'assets/astroscopeth-hero.png',
+  hero: 'assets/astroscopeth-hero.jpg',
   bottomGif: 'assets/daily-software.gif',
   heroLink: 'https://www.tiktok.com/@astroscopeth',
   num: '12',
@@ -500,17 +500,17 @@ function DrawerCarousel({ images, title }) {
 }
 
 const SW_PREVIEW = {
-  'tropfin': 'assets/tropfin-hero.png',
+  'tropfin': 'assets/tropfin-hero.jpg',
   'carbon-wallet': 'assets/carbon-wallet.jpg',
   'wavering': 'assets/wavering.jpg',
   'little-bobby': 'assets/little-bobby-shower.gif',
   'gistda-suvarnabhumi': 'assets/gistda.jpg',
   'my-seoul': 'assets/my-seoul.jpg',
-  'while-it-lasts': 'assets/wil-preview.png',
-  'mcd-uniform': 'assets/mcd-polo.png',
+  'while-it-lasts': 'assets/wil-preview.jpg',
+  'mcd-uniform': 'assets/mcd-polo.jpg',
   'scb-elearning': 'assets/scb-card.gif',
   'grabfood-msize': 'assets/grabfood.jpg',
-  'gmm-grammy': 'assets/gmm-card.png',
+  'gmm-grammy': 'assets/gmm-card.jpg',
   'astroscopeth': 'assets/daily-software.gif'
 };
 
