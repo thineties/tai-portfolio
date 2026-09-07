@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Velorix — Where precision finds its edge</title>
+<title>Suk Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Almarai:wght@300;400;700;800&family=Kanit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1091,6 +1091,7 @@ const FAN_CARDS = [
 { imgUrl: 'assets/wil-preview.jpg', alt: 'While It Lasts' },
 { imgUrl: 'assets/mcd-polo.jpg', alt: 'McDonald\'s Polo' },
 { imgUrl: 'assets/scb-card.gif', alt: 'SCB E-Learning' },
+{ imgUrl: 'assets/aia-hero.jpg', alt: 'AIA iSAY' },
 { imgUrl: 'assets/grabfood.jpg', alt: 'GrabFood' },
 { imgUrl: 'assets/gmm-card.jpg', alt: 'GMM Grammy' },
 { imgUrl: 'assets/daily-software.gif', alt: '@astroscopeth' }];
@@ -1131,7 +1132,7 @@ const SERVICES = [
 { num: '01', name: '3D Modeling', desc: 'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.' },
 { num: '02', name: 'Rendering', desc: 'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.' },
 { num: '03', name: 'Motion Design', desc: 'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.' },
-{ num: '04', name: 'Branding', desc: 'Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence.' },
+{ num: '04', name: 'Branding', desc: 'Crafting cohesive visual identities, from logos to full brand systems, that communicate a clear and memorable presence.' },
 { num: '05', name: 'Web Design', desc: 'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.' }];
 
 
@@ -1601,7 +1602,7 @@ function FooterSection() {
             <div aria-hidden="true" style={{ position: 'absolute', right: -16, top: -24, width: 120, height: 120, borderRadius: 999, background: 'rgba(225,224,204,0.10)', filter: 'blur(40px)', pointerEvents: 'none' }}></div>
             <h2 style={{ fontFamily: FT.serif, fontWeight: 400, fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1, letterSpacing: '-0.01em', margin: '0 0 16px' }}>Stay connected.</h2>
             <p style={{ fontFamily: FT.sans, fontSize: 14, lineHeight: 1.6, color: FT.ink2, margin: '0 0 24px', maxWidth: '34ch', textWrap: 'pretty' }}>Occasional notes on new work, process, and what I'm learning. No noise.</p>
-            <form onSubmit={(e) => {e.preventDefault();if (!email) return;const subject = encodeURIComponent('Hello from your portfolio — ' + email);const body = encodeURIComponent(`Hi Sorawit,\n\nI came across your portfolio and would like to stay in touch.\n\nMy email: ${email}\n\nA bit about me / what I'm looking for:\n\n\nBest regards,`);window.location.href = `mailto:sorawit.sukudom@gmail.com?subject=${subject}&body=${body}`;setSent(true);}} style={{ position: 'relative', maxWidth: 380 }}>
+            <form onSubmit={(e) => {e.preventDefault();if (!email) return;const subject = encodeURIComponent('Hello from your portfolio: ' + email);const body = encodeURIComponent(`Hi Sorawit,\n\nI came across your portfolio and would like to stay in touch.\n\nMy email: ${email}\n\nA bit about me / what I'm looking for:\n\n\nBest regards,`);window.location.href = `mailto:sorawit.sukudom@gmail.com?subject=${subject}&body=${body}`;setSent(true);}} style={{ position: 'relative', maxWidth: 380 }}>
               <input type="email" required value={email} onChange={(e) => {setEmail(e.target.value);setSent(false);}} placeholder="Enter your email" style={{ width: '100%', boxSizing: 'border-box', height: 48, borderRadius: 999, border: `1px solid ${FT.rule}`, background: 'rgba(243,236,231,0.04)', color: FT.ink, fontFamily: FT.sans, fontSize: 14, padding: '0 56px 0 20px', outline: 'none' }} />
               <button type="submit" aria-label="Subscribe" style={{ position: 'absolute', right: 6, top: 6, width: 36, height: 36, borderRadius: 999, border: 0, background: FT.ink, color: FT.bg, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform .2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 {sent ? <svg {...ico}><polyline points="20 6 9 17 4 12"></polyline></svg> : <svg {...ico}><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>}
