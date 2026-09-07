@@ -162,6 +162,15 @@ const { useState, useEffect } = React;
 
 const BG_VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_155101_f2540600-6fe9-433e-8e48-b3f4b72f0727.mp4";
 
+function scrollToHash(e, href) {
+  if (!href || href[0] !== '#') return;
+  const el = document.getElementById(href.slice(1));
+  if (!el) return;
+  e.preventDefault();
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  history.replaceState(null, '', href);
+}
+
 const NAV_ITEMS = [
 { label: 'About', href: '#about' },
 { label: 'Work', href: '#work' },
@@ -264,7 +273,7 @@ function MobileMenu({ open, onClose }) {
             <a
               key={item.label}
               href={item.href}
-              onClick={onClose}
+              onClick={(e) => {scrollToHash(e, item.href);onClose && onClose();}}
               className="text-white/70 hover:text-white text-base py-3 px-3 rounded-xl hover:bg-white/5 flex items-center justify-between group"
               style={{
                 fontFamily: 'Inter, sans-serif',
@@ -323,6 +332,7 @@ function Navbar() {
           <a
             key={item.label}
             href={item.href}
+            onClick={(e) => scrollToHash(e, item.href)}
             className="text-white/80 hover:text-white text-sm px-4 py-1.5 rounded-full hover:bg-white/10 transition-all duration-200"
             style={{ fontFamily: 'Inter, sans-serif' }}>
             
@@ -1614,10 +1624,10 @@ function FooterSection() {
           <section>
             <div style={caption}>Quick links</div>
             <nav>
-              <a href="#about" style={link} {...hover}>About</a>
-              <a href="#work" style={link} {...hover}>Work</a>
-              <a href="#skills" style={link} {...hover}>Skills</a>
-              <a href="#contact" style={link} {...hover}>Contact</a>
+              <a href="#about" onClick={(e) => scrollToHash(e, '#about')} style={link} {...hover}>About</a>
+              <a href="#work" onClick={(e) => scrollToHash(e, '#work')} style={link} {...hover}>Work</a>
+              <a href="#skills" onClick={(e) => scrollToHash(e, '#skills')} style={link} {...hover}>Skills</a>
+              <a href="#contact" onClick={(e) => scrollToHash(e, '#contact')} style={link} {...hover}>Contact</a>
               <a href="mailto:sorawit.sukudom@gmail.com" style={link} {...hover}>Hire me</a>
             </nav>
           </section>
