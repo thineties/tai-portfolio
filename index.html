@@ -11,7 +11,15 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <style>
+  .fan-layout{height:38rem}
+  .sw-gallery::-webkit-scrollbar{display:none}
+  @media (max-width:1023px){.fan-layout{height:34rem}}
+  @media (max-width:767px){.fan-layout{height:28rem}}
+  @media (max-width:639px){.fan-layout{height:26rem}}
+  @media (max-width:479px){.fan-layout{height:22rem}}
+  .fan-card{position:absolute;width:clamp(150px,22vw,300px);aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:#212121;box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06);opacity:0;will-change:transform}
   html, body, #root { height: 100%; }
   body { margin: 0; background: #000; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   /* Lucide-style minimal icons rendered as inline SVG below */
@@ -118,6 +126,7 @@
 <div id="root"></div>
 
 <script type="text/babel" data-presets="react" src="selected-works.jsx"></script>
+<script type="text/babel" data-presets="react" src="fan-carousel.jsx"></script>
 
 <script type="text/babel" data-presets="react">
 
@@ -304,7 +313,8 @@ function Navbar() {
   return (
     <React.Fragment>
       <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-4 lg:px-10 lg:py-6">
-        <span className="text-white text-xl font-semibold tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <span className="flex items-center gap-2.5 text-white text-xl font-semibold tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <img src="assets/logo-suk.png" alt="" style={{ height: 22, width: 'auto', display: 'block' }} />
           suk studio
         </span>
         <div className="hidden lg:flex items-center gap-1 rounded-full px-2 py-1.5" style={{ backgroundColor: '#0C0C0C' }}>
@@ -370,6 +380,8 @@ function HeroSection() {
         </p>
 
         <button
+          type="button"
+          onClick={() => {const el = document.getElementById('work');if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });}}
           className="liquid-glass mt-7 md:mt-8 flex items-center gap-2.5 px-5 py-2.5 rounded-full text-white text-sm font-medium transition-colors duration-300 hover:bg-white/[0.04] group"
           style={{ fontFamily: 'Inter, sans-serif' }}>
           
@@ -632,7 +644,7 @@ function FeaturesSection() {
           
           <img
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            src="assets/background.gif"
+            src="assets/background-photo.jpg"
             alt="Background" />
           
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60"></div>
@@ -1069,10 +1081,25 @@ function SkillsFeatureCard({ delay, num, title, icon, items, cornerIcon, topIcon
 
 }
 
+const FAN_CARDS = [
+{ imgUrl: 'assets/tropfin-hero.png', alt: 'Tropfin' },
+{ imgUrl: 'assets/carbon-wallet.jpg', alt: 'Carbon Wallet' },
+{ imgUrl: 'assets/wavering.jpg', alt: 'Wavering' },
+{ imgUrl: 'assets/little-bobby-shower.gif', alt: 'Little Bobby' },
+{ imgUrl: 'assets/gistda.jpg', alt: 'Gistda' },
+{ imgUrl: 'assets/my-seoul.jpg', alt: 'My Seoul' },
+{ imgUrl: 'assets/wil-preview.png', alt: 'While It Lasts' },
+{ imgUrl: 'assets/mcd-polo.png', alt: 'McDonald\'s Polo' },
+{ imgUrl: 'assets/scb-card.gif', alt: 'SCB E-Learning' },
+{ imgUrl: 'assets/grabfood.jpg', alt: 'GrabFood' },
+{ imgUrl: 'assets/gmm-card.png', alt: 'GMM Grammy' },
+{ imgUrl: 'assets/daily-software.gif', alt: '@astroscopeth' }];
+
 function SkillsSection() {
   const PRIMARY = '#E1E0CC';
   return (
     <section
+      id="work"
       className="relative min-h-screen bg-black overflow-hidden px-4 sm:px-6 md:px-10 lg:px-14 py-20 md:py-28"
       style={{ fontFamily: "'Almarai', sans-serif" }}>
       
@@ -1091,68 +1118,8 @@ function SkillsSection() {
           
         </div>
 
-        {/* 4-column grid */}
-        <div
-          className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-2 md:gap-1"
-          style={{ minHeight: '480px' }}>
-          
-          {/* Card 1 — Video */}
-          <div
-            className="card-rise relative rounded-2xl overflow-hidden min-h-[280px] lg:h-[480px]"
-            style={{ backgroundColor: '#212121', animationDelay: '0s' }}>
-            
-            <img
-              className="absolute inset-0 w-full h-full object-cover"
-              src="assets/skills-card-1.jpg"
-              alt="Capabilities" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/55"></div>
-            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-7" style={{ gap: "0px", alignItems: "flex-start" }}>
-              <p className="text-[16px] md:text-[17px] leading-tight" style={{ color: PRIMARY, fontFamily: "Inter" }}>Capabilities
-
-              </p>
-            </div>
-          </div>
-
-          <SkillsFeatureCard
-            delay={0.15}
-            num="01"
-            title="Design & Visual"
-            topIcon="assets/icon-design-corner.png"
-            items={[
-            'Figma, Prototyping, Wireframing',
-            'Design systems, Component libraries',
-            'Brand identity',
-            'Illustrator, Typography']
-            } />
-          
-
-          <SkillsFeatureCard
-            delay={0.3}
-            num="02"
-            title={<span style={{ color: '#ffffff' }}>Research</span>}
-            topIcon="assets/icon-research-top.png"
-            items={[
-            'Audience research',
-            'Analytics',
-            'Cross-cultural',
-            'User interviews',
-            'Usability testing']
-            } />
-          
-
-          <SkillsFeatureCard
-            delay={0.45}
-            num="03"
-            title="Frontend & Tech"
-            topIcon="assets/icon-tech-top.png"
-            items={[
-            'HTML / CSS basics',
-            'Generative AI workflow',
-            'Accessibility (WCAG)',
-            'Design-to-code handoff',
-            'CMS']
-            } />
-          
+        <div className="mt-10 md:mt-14">
+          <FanCarousel cards={FAN_CARDS} />
         </div>
       </div>
     </section>);
@@ -1559,7 +1526,7 @@ function Selected3DSection() {
             className="font-black uppercase leading-[0.95] tracking-tight text-white"
             style={{ fontFamily: "Inter", fontSize: "30px", fontWeight: "400" }}>
             
-            Works in volume.
+            <span style={{ fontFamily: "'Instrument Serif', serif", color: '#000000' }}>Works in volume.</span>
           </h2>
         </div>
         <div className="hidden md:flex items-center gap-3 shrink-0">
@@ -1610,141 +1577,81 @@ function Selected3DSection() {
 // =================== Footer / Contact (Section 8) ===================
 function FooterSection() {
   const FT = {
-    bg: '#1a1614',
-    ink: '#f3ece7',
-    ink2: 'rgba(243,236,231,0.55)',
-    rule: 'rgba(243,236,231,0.10)',
+    bg: '#1a1614', ink: '#f3ece7', ink2: 'rgba(243,236,231,0.55)', ink3: 'rgba(243,236,231,0.35)',
+    rule: 'rgba(243,236,231,0.10)', accent: '#E1E0CC',
     serif: "'Instrument Serif', Georgia, serif",
-    mono: "'JetBrains Mono', ui-monospace, Menlo, monospace"
+    mono: "'JetBrains Mono', ui-monospace, Menlo, monospace",
+    sans: "'Inter', sans-serif"
   };
-
-  const labelStyle = {
-    fontFamily: FT.mono, fontSize: 11, letterSpacing: '0.16em',
-    textTransform: 'uppercase', color: FT.ink2
-  };
-  const captionStyle = {
-    fontFamily: FT.mono, fontSize: 11, letterSpacing: '0.16em',
-    textTransform: 'uppercase', color: FT.ink2
-  };
-  const valueStyle = {
-    fontFamily: FT.serif, fontWeight: 400,
-    fontSize: 'clamp(22px, 2.6vw, 34px)', lineHeight: 1.1,
-    color: FT.ink, letterSpacing: '-0.005em',
-    textDecoration: 'none'
-  };
-  const linkHover = {
-    onMouseEnter: (e) => {e.currentTarget.style.textDecoration = 'underline';e.currentTarget.style.textUnderlineOffset = '6px';},
-    onMouseLeave: (e) => {e.currentTarget.style.textDecoration = 'none';}
-  };
-
-  const Row = ({ label, value, href, target, rel, children }) =>
-  <div style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: 24, alignItems: 'baseline', padding: '14px 0' }}>
-      <div style={labelStyle}>{label}</div>
-      <div>
-        {href ?
-      <a href={href} target={target} rel={rel} style={valueStyle} {...linkHover}>{value || children}</a> :
-
-      <span style={valueStyle}>{value || children}</span>
-      }
-      </div>
-    </div>;
-
-
+  const [email, setEmail] = React.useState('');
+  const [sent, setSent] = React.useState(false);
+  const caption = { fontFamily: FT.mono, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: FT.ink2, marginBottom: 24 };
+  const link = { fontFamily: FT.sans, fontSize: 14, color: FT.ink2, textDecoration: 'none', display: 'block', padding: '6px 0', transition: 'color .2s' };
+  const hover = { onMouseEnter: (e) => e.currentTarget.style.color = FT.ink, onMouseLeave: (e) => e.currentTarget.style.color = FT.ink2 };
+  const Social = ({ href, label, children }) =>
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} className="ft-social" style={{ width: 40, height: 40, borderRadius: 999, border: `1px solid ${FT.rule}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: FT.ink2, transition: 'all .25s' }}
+      onMouseEnter={(e) => {e.currentTarget.style.color = FT.bg;e.currentTarget.style.background = FT.ink;e.currentTarget.style.borderColor = FT.ink;}}
+      onMouseLeave={(e) => {e.currentTarget.style.color = FT.ink2;e.currentTarget.style.background = 'transparent';e.currentTarget.style.borderColor = FT.rule;}}>{children}</a>;
+  const ico = { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' };
   return (
-    <footer
-      id="contact"
-      style={{
-        backgroundColor: FT.bg,
-        color: FT.ink,
-        padding: 'clamp(48px, 7vw, 96px) clamp(24px, 5vw, 80px) clamp(24px, 3vw, 40px)',
-        borderTop: `1px solid ${FT.rule}`
-      }}>
-      
-      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-        {/* Two-column grid */}
-        <div className="footer-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 'clamp(40px, 6vw, 100px)',
-          paddingBottom: 'clamp(48px, 7vw, 96px)'
-        }}>
-          {/* DIRECT */}
-          <section>
-            <div style={{ ...captionStyle, marginBottom: 28 }}>Direct</div>
-            <Row
-              label="Email"
-              value="sorawit.sukudom@gmail.com"
-              href="mailto:sorawit.sukudom@gmail.com" />
-            
-            <Row label="Phone" value="+49 1551 0965507" />
-            <Row label="Whatsapp">
-              <a
-                href="https://wa.me/4915510965507"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ ...valueStyle, display: 'inline-flex', alignItems: 'center', gap: 12 }}
-                {...linkHover}>
-                
-                <span>Message me</span>
-                <span style={{ fontFamily: FT.serif }}>→</span>
-              </a>
-            </Row>
+    <footer id="contact" style={{ backgroundColor: FT.bg, color: FT.ink, padding: 'clamp(56px, 7vw, 96px) clamp(24px, 5vw, 80px) clamp(24px, 3vw, 40px)', borderTop: `1px solid ${FT.rule}`, position: 'relative', overflow: 'hidden' }}>
+      <img src="assets/footer-wai.png" alt="" aria-hidden="true" className="footer-bg-portrait" style={{ position: 'absolute', right: 'clamp(8px, 4vw, 64px)', bottom: 0, height: '92%', width: 'auto', opacity: 0.28, pointerEvents: 'none', userSelect: 'none', zIndex: 0, maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 55%, rgba(0,0,0,0))', WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 55%, rgba(0,0,0,0))' }} />
+      <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 'clamp(32px, 5vw, 72px)', paddingBottom: 'clamp(48px, 6vw, 80px)' }}>
+          <section style={{ position: 'relative' }}>
+            <div aria-hidden="true" style={{ position: 'absolute', right: -16, top: -24, width: 120, height: 120, borderRadius: 999, background: 'rgba(225,224,204,0.10)', filter: 'blur(40px)', pointerEvents: 'none' }}></div>
+            <h2 style={{ fontFamily: FT.serif, fontWeight: 400, fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1, letterSpacing: '-0.01em', margin: '0 0 16px' }}>Stay connected.</h2>
+            <p style={{ fontFamily: FT.sans, fontSize: 14, lineHeight: 1.6, color: FT.ink2, margin: '0 0 24px', maxWidth: '34ch', textWrap: 'pretty' }}>Occasional notes on new work, process, and what I'm learning. No noise.</p>
+            <form onSubmit={(e) => {e.preventDefault();if (!email) return;const subject = encodeURIComponent('Hello from your portfolio — ' + email);const body = encodeURIComponent(`Hi Sorawit,\n\nI came across your portfolio and would like to stay in touch.\n\nMy email: ${email}\n\nA bit about me / what I'm looking for:\n\n\nBest regards,`);window.location.href = `mailto:sorawit.sukudom@gmail.com?subject=${subject}&body=${body}`;setSent(true);}} style={{ position: 'relative', maxWidth: 380 }}>
+              <input type="email" required value={email} onChange={(e) => {setEmail(e.target.value);setSent(false);}} placeholder="Enter your email" style={{ width: '100%', boxSizing: 'border-box', height: 48, borderRadius: 999, border: `1px solid ${FT.rule}`, background: 'rgba(243,236,231,0.04)', color: FT.ink, fontFamily: FT.sans, fontSize: 14, padding: '0 56px 0 20px', outline: 'none' }} />
+              <button type="submit" aria-label="Subscribe" style={{ position: 'absolute', right: 6, top: 6, width: 36, height: 36, borderRadius: 999, border: 0, background: FT.ink, color: FT.bg, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform .2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+                {sent ? <svg {...ico}><polyline points="20 6 9 17 4 12"></polyline></svg> : <svg {...ico}><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>}
+              </button>
+            </form>
+            {sent && <p style={{ fontFamily: FT.mono, fontSize: 11, letterSpacing: '0.08em', color: FT.ink2, margin: '12px 0 0' }}>Thanks. You're on the list.</p>}
           </section>
-
-          {/* ELSEWHERE */}
           <section>
-            <div style={{ ...captionStyle, marginBottom: 28 }}>Elsewhere</div>
-            <Row
-              label="LinkedIn"
-              value="linkedin.com/in/sorawit-sukudom"
-              href="https://www.linkedin.com/in/sorawit-sukudom"
-              target="_blank"
-              rel="noopener noreferrer" />
-            
-            <Row
-              label="TikTok"
-              value="@astroscopeth"
-              href="https://www.tiktok.com/@astroscopeth"
-              target="_blank"
-              rel="noopener noreferrer" />
-            
-            <Row
-              label="Web"
-              value="url-shortener.me/E5MP"
-              href="https://url-shortener.me/E5MP"
-              target="_blank"
-              rel="noopener noreferrer" />
-            
-            <Row label="Address" value="Altheimer Str. 56, 64807 Dieburg" />
+            <div style={caption}>Quick links</div>
+            <nav>
+              <a href="#about" style={link} {...hover}>About</a>
+              <a href="#work" style={link} {...hover}>Work</a>
+              <a href="#skills" style={link} {...hover}>Skills</a>
+              <a href="#contact" style={link} {...hover}>Contact</a>
+              <a href="mailto:sorawit.sukudom@gmail.com" style={link} {...hover}>Hire me</a>
+            </nav>
+          </section>
+          <section>
+            <div style={caption}>Contact</div>
+            <address style={{ fontStyle: 'normal' }}>
+              <a href="mailto:sorawit.sukudom@gmail.com" style={link} {...hover}>sorawit.sukudom@gmail.com</a>
+              <a href="tel:+4915510965507" style={link} {...hover}>+49 1551 0965507</a>
+              <a href="https://wa.me/4915510965507" target="_blank" rel="noopener noreferrer" style={link} {...hover}>WhatsApp →</a>
+              <span style={{ ...link, color: FT.ink3 }}>Altheimer Str. 56<br />64807 Dieburg, Germany</span>
+            </address>
+          </section>
+          <section>
+            <div style={caption}>Follow</div>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 24 }}>
+              <Social href="https://www.linkedin.com/in/sorawit-sukudom" label="LinkedIn"><svg {...ico}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></Social>
+              <Social href="https://www.tiktok.com/@astroscopeth" label="TikTok"><svg {...ico}><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></Social>
+              <Social href="https://url-shortener.me/E5MP" label="Web"><svg {...ico}><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></Social>
+            </div>
+            <div style={{ fontFamily: FT.mono, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: FT.ink3, lineHeight: 1.8 }}>Frankfurt · Darmstadt<br />Available for freelance</div>
           </section>
         </div>
-
-        {/* Bottom rail */}
-        <div
-          className="footer-rail"
-          style={{
-            borderTop: `1px solid ${FT.rule}`,
-            paddingTop: 'clamp(24px, 3vw, 40px)',
-            display: 'grid',
-            gridTemplateColumns: '1fr auto 1fr',
-            alignItems: 'center',
-            gap: 24,
-            ...captionStyle
-          }}>
-          
-          <span>© 2026</span>
-          <span style={{ textAlign: 'center' }}>FRANKFURT · DARMSTADT</span>
-          <span style={{ textAlign: 'right' }}>SORAWIT SUKUDOM
-</span>
+        <div className="footer-rail" style={{ borderTop: `1px solid ${FT.rule}`, paddingTop: 'clamp(24px, 3vw, 32px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', fontFamily: FT.mono, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: FT.ink2 }}>
+          <span>© 2026 Sorawit Sukudom. All rights reserved.</span>
+          <nav style={{ display: 'flex', gap: 24 }}>
+            <a href="#" style={{ color: FT.ink2, textDecoration: 'none' }} {...hover}>Privacy</a>
+            <a href="#" style={{ color: FT.ink2, textDecoration: 'none' }} {...hover}>Imprint</a>
+          </nav>
         </div>
       </div>
-
       <style>{`
-        @media (max-width: 800px) {
-          footer#contact .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          footer#contact .footer-rail { grid-template-columns: 1fr !important; text-align: center !important; gap: 8px !important; }
-          footer#contact .footer-rail > span { text-align: center !important; }
-        }
+        footer#contact input::placeholder { color: rgba(243,236,231,0.35); }
+        footer#contact input:focus { border-color: rgba(243,236,231,0.35) !important; }
+        @media (max-width: 1024px) { footer#contact .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 640px) { footer#contact .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; } footer#contact .footer-rail { justify-content: center !important; text-align: center; } footer#contact .footer-bg-portrait { opacity: 0.14 !important; height: 60% !important; right: -10% !important; } }
       `}</style>
     </footer>);
 }
@@ -1756,7 +1663,6 @@ function App() {
       <HeroSection />
       <FeaturesSection />
       <SkillsSection />
-      <Selected3DSection />
       <SelectedWorksSection />
       <FooterSection />
     </div>);
