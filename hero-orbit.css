@@ -1,0 +1,25 @@
+.orb-stage{position:absolute;inset:0;contain:strict;isolation:isolate;--orb-reveal:cubic-bezier(.16,1,.3,1);--orb-soft:cubic-bezier(.25,.8,.28,1)}
+.orb-word{position:absolute;top:11.5dvh;left:4.35vw;margin:0;z-index:1;font-family:"Instrument Serif",serif;font-weight:400;font-size:min(16vw,40dvh);letter-spacing:.03em;line-height:1;color:#fff;text-transform:uppercase;white-space:nowrap}
+.orb-word__mask{display:block;overflow:hidden;padding-top:.22em;margin-top:-.22em}
+.orb-word__inner{display:block}
+.orb-word__pink{background:linear-gradient(180deg,#ffb36b 0%,#ff7a2f 55%,#e2531e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.orb-flower{position:absolute;top:14.75dvh;left:49.12vw;height:106dvh;transform:translateX(-50%);pointer-events:none;z-index:2}
+.orb-flower__sizer{display:block;height:100%;width:auto;visibility:hidden}
+.orb-flower__layer{position:absolute;inset:0}
+.orb-flower__layer img{width:100%;height:100%;object-fit:cover;display:block}
+.orb-flower__layer--top img{visibility:hidden}
+.orb-corner{position:absolute;bottom:4.36dvh;z-index:3;color:#f7f7f7;font-family:"JetBrains Mono",monospace;font-size:clamp(11px,min(1vw,1.8dvh),16px);line-height:1.5;margin:0;opacity:.85}
+.orb-corner__inner{display:block}
+.orb-corner--l{left:3.18vw}.orb-corner--r{left:78.28vw}
+.orb-cta{position:absolute;left:0;right:0;bottom:4.2dvh;display:flex;justify-content:center;z-index:4}
+.orb-cta button{margin-top:0!important}
+@keyframes orb-word{from{transform:translateY(118%)}to{transform:none}}
+@keyframes orb-subject{from{opacity:0;transform:translateX(-50%) translateY(3.4dvh)}to{opacity:1;transform:translateX(-50%)}}
+@keyframes orb-corner{from{opacity:0;transform:translateY(1.2dvh)}to{opacity:1;transform:none}}
+.orb-anim .orb-word__inner{animation:orb-word 1150ms var(--orb-reveal) 300ms both}
+.orb-anim .orb-flower{animation:orb-subject 1150ms var(--orb-reveal) 660ms both}
+.orb-anim .orb-corner__inner{animation:orb-corner 720ms var(--orb-soft) 980ms both}
+.orb-anim .orb-cta{animation:orb-corner 720ms var(--orb-soft) 980ms both}
+@media (prefers-reduced-motion:reduce){.orb-anim *{animation:none!important}}
+@media (max-width:1200px),(orientation:portrait){.orb-word{left:0;width:100%;text-align:center}}
+@media (max-aspect-ratio:4/5){.orb-flower{height:min(55dvh,110vw);top:24dvh}.orb-word{font-size:min(20vw,16dvh);top:13dvh}.orb-corner{max-width:44vw;bottom:13dvh}.orb-corner--r{left:auto;right:4vw;text-align:right}}

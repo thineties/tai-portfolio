@@ -1,5 +1,5 @@
 // =================== Selected Works Section ===================
-const SW_PROJECTS = [
+const SW_PROJECTS = window.SW_PROJECTS = [
 {
   id: 'tropfin',
   logo: 'assets/logo-tropfin.png',
@@ -65,29 +65,6 @@ const SW_PROJECTS = [
   toolkit: ['Unreal Engine 4', 'C#', 'Figma', 'Procreate']
 },
 {
-  id: 'little-bobby',
-  hero: 'assets/little-bobby-hero.avif',
-  gallery: ['assets/little-bobby-01.avif', 'assets/little-bobby-02.avif'],
-  galleryInline: true,
-  midImage: 'assets/little-bobby-03.avif',
-  youtubeInline: 'https://www.youtube.com/embed/oCaVHah2tL8?si=U-ehYnVDKjKg-jO5',
-  youtube: 'https://www.youtube.com/embed/QYYQum8mVUQ?si=9b8BPCkFclquBVee',
-  footer: 'assets/little-bobby-footer.avif',
-  num: '04',
-  title: 'Little Bobby',
-  kicker: 'Pre-school Animation — Team Lead · Animator · Team of 4',
-  year: '2020',
-  type: 'Animation',
-  awards: ['1st Runner-up — Pre-school Animation'],
-  summary: 'A short animated series about Bobby, a small star preparing for an adventure to the Candy Galaxy. Designed to teach pre-schoolers everyday self-care.',
-  role: 'Team Lead · Animator',
-  context: 'Team-of-four production aimed at pre-school audiences: short episodes built around one self-care habit each (brushing teeth, washing hands, sharing).',
-  problem: 'How to land a self-care lesson in two minutes without lecturing, and keep four-year-olds rewatching.',
-  approach: 'Built a tiny stable of repeating characters and a soft candy-galaxy world. Each episode followed the same emotional shape: Bobby tries, Bobby fumbles, Bobby learns. Habit modeled, not stated.',
-  outcome: '1st Runner-up, Pre-school Animation. Series used as classroom material in early-childhood pilots.',
-  toolkit: ['After Effects', 'Illustrator', 'Procreate', 'Premiere']
-},
-{
   id: 'gistda-suvarnabhumi',
   logo: 'assets/logo-gistda.png',
   hero: 'assets/gistda-hero.jpg',
@@ -95,7 +72,7 @@ const SW_PROJECTS = [
   gallery: ['assets/gistda-wps-01.jpg', 'assets/gistda-wps-02.jpg'],
   galleryInline: true,
   midImage: 'assets/gistda-flow.jpg',
-  num: '05',
+  num: '04',
   title: 'Gistda Suvarnabhumi',
   kicker: 'Cultural Heritage Platform — UI Designer · Team of 3',
   year: '2024',
@@ -116,7 +93,7 @@ const SW_PROJECTS = [
   footer: 'assets/my-seoul-footer.jpg',
   gallery: ['assets/my-seoul-01.jpg', 'assets/my-seoul-02.jpg', 'assets/my-seoul-03.jpg', 'assets/my-seoul-04.jpg', 'assets/my-seoul-05.jpg', 'assets/my-seoul-06.jpg', 'assets/my-seoul-07.jpg', 'assets/my-seoul-08.jpg', 'assets/my-seoul-09.jpg', 'assets/my-seoul-10.jpg', 'assets/my-seoul-11.jpg'],
   galleryInline: true,
-  num: '06',
+  num: '05',
   title: 'My Seoul',
   kicker: 'SDG-aligned App Feature — UI Designer · Intl. Team of 4',
   year: '2019',
@@ -134,12 +111,12 @@ const SW_PROJECTS = [
   id: 'while-it-lasts',
   logo: 'assets/logo-hda.png',
   hero: 'assets/wil-cover.jpg',
-  heroGallery: ['assets/wil-cover.jpg', 'assets/wil-01.jpg', 'assets/wil-02.jpg', 'assets/wil-03.jpg', 'assets/wil-04.jpg', 'assets/wil-05.jpg', 'assets/wil-06.jpg'],
+  heroYoutube: 'https://www.youtube.com/embed/lscYvCT8pIc',
+  footerGallery: ['assets/wil-cover.jpg', 'assets/wil-card.jpg', 'assets/wil-01.jpg', 'assets/wil-02.jpg', 'assets/wil-03.jpg', 'assets/wil-04.jpg', 'assets/wil-05.jpg', 'assets/wil-06.jpg', 'assets/wil-festival.jpg'],
   youtubeBody: 'https://www.youtube.com/embed/OrEaBnIldkQ',
   afterOutcomeImage: 'assets/wil-ori.png',
   download: { href: 'assets/While It Lasts Presentation.pdf', label: 'Download presentation (PDF)' },
-  youtubeInline: 'https://www.youtube.com/embed/lscYvCT8pIc',
-  num: '07',
+  num: '06',
   title: 'While It Lasts',
   kicker: 'Immersive Labyrinth Experience — Alive Festival · Master\'s Group Project · Team of 5',
   year: '2026',
@@ -159,7 +136,7 @@ const SW_PROJECTS = [
   hero: 'assets/mcd-hero.jpg',
   gallery: ['assets/mcd-01.jpg', 'assets/mcd-02.jpg', 'assets/mcd-03.jpg', 'assets/mcd-04.jpg', 'assets/mcd-05.jpg'],
   galleryInline: true,
-  num: '08',
+  num: '07',
   title: 'McDonald\'s Uniform System',
   kicker: 'Product Design — Product Designer',
   year: '2021',
@@ -172,6 +149,29 @@ const SW_PROJECTS = [
   approach: 'Set a system spec across silhouette, fabric weight, palette, and trim. Designed each piece to read as one family on the floor while still solving role-specific needs (heat, motion, brand visibility).',
   outcome: 'System adopted across HQ Thailand. Sister briefs for Delta and Kobelco shipped using the same spec scaffolding.',
   toolkit: ['Illustrator', 'Photoshop', 'CLO 3D']
+},
+{
+  id: 'little-bobby',
+  hero: 'assets/little-bobby-hero.avif',
+  gallery: ['assets/little-bobby-01.avif', 'assets/little-bobby-02.avif'],
+  galleryInline: true,
+  midImage: 'assets/little-bobby-03.avif',
+  youtubeInline: 'https://www.youtube.com/embed/oCaVHah2tL8?si=U-ehYnVDKjKg-jO5',
+  youtube: 'https://www.youtube.com/embed/QYYQum8mVUQ?si=9b8BPCkFclquBVee',
+  footer: 'assets/little-bobby-footer.avif',
+  num: '08',
+  title: 'Little Bobby',
+  kicker: 'Pre-school Animation — Team Lead · Animator · Team of 4',
+  year: '2020',
+  type: 'Animation',
+  awards: ['1st Runner-up — Pre-school Animation'],
+  summary: 'A short animated series about Bobby, a small star preparing for an adventure to the Candy Galaxy. Designed to teach pre-schoolers everyday self-care.',
+  role: 'Team Lead · Animator',
+  context: 'Team-of-four production aimed at pre-school audiences: short episodes built around one self-care habit each (brushing teeth, washing hands, sharing).',
+  problem: 'How to land a self-care lesson in two minutes without lecturing, and keep four-year-olds rewatching.',
+  approach: 'Built a tiny stable of repeating characters and a soft candy-galaxy world. Each episode followed the same emotional shape: Bobby tries, Bobby fumbles, Bobby learns. Habit modeled, not stated.',
+  outcome: '1st Runner-up, Pre-school Animation. Series used as classroom material in early-childhood pilots.',
+  toolkit: ['After Effects', 'Illustrator', 'Procreate', 'Premiere']
 },
 {
   id: 'scb-elearning',
@@ -389,7 +389,9 @@ function CaseDrawer({ project, onClose }) {
             letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--sw-accent)'
           }}>{project.kicker}</div>
 
-          {project.heroGallery ?
+          {project.heroYoutube ?
+          <div style={{ marginTop: 40, aspectRatio: '16 / 9', width: '100%', border: '1px solid var(--sw-rule)', background: '#000' }}><iframe src={project.heroYoutube} title={`${project.title} video`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen style={{ width: '100%', height: '100%', border: 0, display: 'block' }}></iframe></div> :
+          project.heroGallery ?
           <div style={{ marginTop: 40 }}><DrawerCarousel images={project.heroGallery} title={project.title} /></div> :
           project.hero ?
           (project.heroLink ?
@@ -447,7 +449,7 @@ function CaseDrawer({ project, onClose }) {
             </div>
           </div>
           {project.youtubeInline && <div style={{ marginTop: 48, aspectRatio: '16 / 9', width: '100%', border: '1px solid var(--sw-rule)', background: '#000' }}><iframe src={project.youtubeInline} title={`${project.title} video 2`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen style={{ width: '100%', height: '100%', border: 0, display: 'block' }}></iframe></div>}
-          {project.footerGallery && <div style={{ marginTop: 8 }}><DrawerCarousel images={project.footerGallery} title={project.title} /></div>}
+          {project.footerGallery && <div style={{ marginTop: 48 }}><DrawerCarousel images={project.footerGallery} title={project.title} /></div>}
           {project.bottomGif && <a href={project.heroLink} target="_blank" rel="noopener noreferrer" style={{ display: 'block', marginTop: 48, maxWidth: 420 }}><img src={project.bottomGif} alt={`${project.title} daily content`} style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid var(--sw-rule)' }} /><span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 10, fontFamily: 'var(--sw-mono)', fontSize: 11, letterSpacing: '0.08em', color: 'var(--sw-ink-2)', textDecoration: 'underline', textUnderlineOffset: 3 }}>{project.heroLink.replace(/^https?:\/\/(www\.)?/, '')} ↗</span></a>}
         </div>
       </div>
@@ -526,7 +528,7 @@ const SW_PREVIEW = {
   'little-bobby': 'assets/little-bobby-shower.gif',
   'gistda-suvarnabhumi': 'assets/gistda.jpg',
   'my-seoul': 'assets/my-seoul.jpg',
-  'while-it-lasts': 'assets/wil-preview.jpg',
+  'while-it-lasts': 'assets/wil-festival.jpg',
   'mcd-uniform': 'assets/mcd-polo.jpg',
   'scb-elearning': 'assets/scb-card.gif',
   'aia-isay': 'assets/aia-hero.jpg',
@@ -666,6 +668,7 @@ function SwShowcase({ projects, onOpen }) {
 
 function SelectedWorksSection() {
   const [active, setActive] = React.useState(null);
+  React.useEffect(() => { window.__swOpen = (id) => { const p = SW_PROJECTS.find((x) => x.id === id); if (p) setActive(p); }; return () => { delete window.__swOpen; }; }, []);
   return (
     <section
       id="skills"
@@ -679,9 +682,9 @@ function SelectedWorksSection() {
         <div
           className="sw-header"
           style={{ display: 'grid', gridTemplateColumns: '220px 1fr', gap: 48, marginBottom: 64, alignItems: 'baseline' }}>
-          <div style={{ fontFamily: 'var(--sw-mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--sw-ink-3)' }}>SELECTED WORKS · 2019—2025</div>
-          <h2 style={{ fontWeight: 400, fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--sw-ink)', margin: 0, fontFamily: "\"Instrument Serif\"" }}>
-            Work that <em style={{ fontStyle: 'italic' }}>earns</em> a second look<br /><span style={{ color: 'var(--sw-accent)' }}>shipped</span>, signed, alive.
+          <div style={{ fontFamily: 'var(--sw-mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(26,22,20,0.55)' }}>SELECTED WORKS · 2019—2025</div>
+          <h2 style={{ fontWeight: 400, fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1, letterSpacing: '-0.015em', color: 'rgba(26,22,20,0.7)', margin: 0, fontFamily: "\"Instrument Serif\"" }}>
+            Work that <em style={{ fontStyle: 'italic' }}>earns</em> a second look<br /><span style={{ color: 'rgba(194,90,60,0.75)' }}>shipped</span>, signed, alive.
           </h2>
         </div>
         <div className="sw-list">

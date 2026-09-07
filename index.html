@@ -126,8 +126,13 @@
 <body>
 <div id="root"></div>
 
+<link rel="stylesheet" href="hero-orbit.css">
+<script src="hero-orbit.js"></script>
 <script type="text/babel" data-presets="react" src="selected-works.jsx"></script>
+<script type="text/babel" data-presets="react" src="player-hero.jsx"></script>
+<script type="text/babel" data-presets="react" src="cinematic-hero.jsx"></script>
 <script type="text/babel" data-presets="react" src="fan-carousel.jsx"></script>
+<script type="text/babel" data-presets="react" src="image-stream.jsx"></script>
 
 <script type="text/babel" data-presets="react">
 
@@ -325,7 +330,6 @@ function Navbar() {
       <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-4 lg:px-10 lg:py-6">
         <span className="flex items-center gap-2.5 text-white text-xl font-semibold tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
           <img src="assets/logo-suk.png" alt="" style={{ height: 22, width: 'auto', display: 'block' }} />
-          suk studio
         </span>
         <div className="hidden lg:flex items-center gap-1 rounded-full px-2 py-1.5" style={{ backgroundColor: '#0C0C0C' }}>
           {NAV_ITEMS.map((item) =>
@@ -357,39 +361,33 @@ function Navbar() {
 }
 
 function HeroSection() {
+  return <CinematicHero />;
+}
+
+function HeroSectionOrbit() {
+  const stageRef = React.useRef(null);
+  useEffect(() => {
+    const stage = stageRef.current; if (!stage) return;
+    const cleanup = window.initOrbitHero ? window.initOrbitHero(stage) : null;
+    const t = setTimeout(() => stage.classList.remove('orb-anim'), 6000);
+    return () => { clearTimeout(t); cleanup && cleanup(); };
+  }, []);
+  const FRONT = 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260808_192942_e1086505-d7da-433b-a59b-8220f4e6c808.png&w=1280&q=85';
+  const REVEAL = 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260808_151324_bf318a5f-5525-4fc7-aab5-e9a341018828.png&w=1280&q=85';
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      <video
-        className="absolute inset-0 z-0 w-full h-full object-cover"
-        src={BG_VIDEO}
-        autoPlay
-        loop
-        muted
-        playsInline>
-      </video>
-
-      <div className="relative z-20 flex flex-col items-center text-center pt-[90px] md:pt-[120px] px-5 sm:px-8">
-        <h1
-          className="text-white font-normal leading-[1.12] tracking-tight max-w-3xl"
-          style={{
-
-            lineHeight: "1.1", fontSize: "50px", fontFamily: "\"Instrument Serif\""
-          }}>
-          
-          Designer who builds the stories,
-          <br className="hidden sm:block" />
-          {' '}not just screens
+      <div ref={stageRef} className="orb-stage orb-anim">
+        <h1 className="orb-word" aria-label="Suk Studio">
+          <span className="orb-word__mask"><span className="orb-word__inner"><span className="orb-word__white">Suk</span> <span className="orb-word__pink">Studio</span></span></span>
         </h1>
-
-        <p
-          className="mt-5 md:mt-6 text-white/60 text-sm md:text-base leading-relaxed max-w-xs sm:max-w-sm md:max-w-md"
-          style={{ letterSpacing: '0.01em', fontFamily: "\"JetBrains Mono\"", opacity: "0.8" }}>
-          
-          UXUI | Brand
-          <br className="hidden sm:block" />
-          {' '}| Motion | Storytelling | Ai Designer
-        </p>
-
+        <div className="orb-flower">
+          <img className="orb-flower__sizer" src={FRONT} alt="" aria-hidden="true" />
+          <div className="orb-flower__layer orb-flower__layer--bg"><img src={FRONT} alt="Pixel-art pink and violet lily" /></div>
+          <div className="orb-flower__layer orb-flower__layer--top" aria-hidden="true"><img src={REVEAL} alt="" /></div>
+        </div>
+        <p className="orb-corner orb-corner--l"><span className="orb-corner__inner">Designer who builds the stories,<br />not just screens.</span></p>
+        <p className="orb-corner orb-corner--r"><span className="orb-corner__inner">UXUI | Brand | Motion<br />Storytelling | Ai Designer</span></p>
+        <div className="orb-cta">
         <button
           type="button"
           onClick={() => {const el = document.getElementById('work');if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });}}
@@ -399,6 +397,7 @@ function HeroSection() {
           See the Work  
           <ArrowRightIcon size={15} className="group-hover:translate-x-0.5 transition-transform duration-200" />
         </button>
+        </div>
       </div>
     </section>);
 
@@ -1096,11 +1095,11 @@ const FAN_CARDS = [
 { imgUrl: 'assets/tropfin-hero.jpg', alt: 'Tropfin' },
 { imgUrl: 'assets/carbon-wallet.jpg', alt: 'Carbon Wallet' },
 { imgUrl: 'assets/wavering.jpg', alt: 'Wavering' },
-{ imgUrl: 'assets/little-bobby-shower.gif', alt: 'Little Bobby' },
 { imgUrl: 'assets/gistda.jpg', alt: 'Gistda' },
 { imgUrl: 'assets/my-seoul.jpg', alt: 'My Seoul' },
-{ imgUrl: 'assets/wil-preview.jpg', alt: 'While It Lasts' },
+{ imgUrl: 'assets/wil-card.jpg', alt: 'While It Lasts' },
 { imgUrl: 'assets/mcd-polo.jpg', alt: 'McDonald\'s Polo' },
+{ imgUrl: 'assets/little-bobby-shower.gif', alt: 'Little Bobby' },
 { imgUrl: 'assets/scb-card.gif', alt: 'SCB E-Learning' },
 { imgUrl: 'assets/aia-hero.jpg', alt: 'AIA iSAY' },
 { imgUrl: 'assets/grabfood.jpg', alt: 'GrabFood' },
@@ -1119,7 +1118,7 @@ function SkillsSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center" style={{ fontFamily: "\"Instrument Serif\"", fontSize: "40px", lineHeight: "1.1" }}>
+        <div className="text-center relative z-20" style={{ fontFamily: "\"Instrument Serif\"", fontSize: "40px", lineHeight: "1.1" }}>
           <WordsPullUpMultiStyle
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight leading-[1.25]"
             segments={[{ text: 'Six years across brand, product, and motion.', className: '' }]} />
@@ -1131,7 +1130,7 @@ function SkillsSection() {
         </div>
 
         <div className="mt-10 md:mt-14">
-          <FanCarousel cards={FAN_CARDS} />
+          <ImageStreamHero images={FAN_CARDS} cards={9} speed={18} axis={55} className="w-full" style={{ height: 'clamp(320px, 60vh, 640px)', borderRadius: 16 }} />
         </div>
       </div>
     </section>);
