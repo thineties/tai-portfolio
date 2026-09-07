@@ -48,7 +48,7 @@ const SW_PROJECTS = [
   footerGallery: ['assets/wavering-cs-01.jpg', 'assets/wavering-cs-02.jpg', 'assets/wavering-cs-03.jpg', 'assets/wavering-cs-04.jpg', 'assets/wavering-cs-05.jpg', 'assets/wavering-cs-06.jpg', 'assets/wavering-cs-07.jpg', 'assets/wavering-cs-08.jpg', 'assets/wavering-cs-09.jpg'],
   videoAlbum: [
     { src: 'https://video.wixstatic.com/video/f86e21_d7924c2bc8624923bbe8149dd7c7c0a2/720p/mp4/file.mp4', label: 'Main film' },
-    { src: 'assets/wavering-teaser-02.mp4', label: 'Teaser', blob: true }
+    { src: 'https://video.wixstatic.com/video/f86e21_266b271c3d044a56b248df74568245fd/1080p/mp4/file.mp4', label: 'Teaser' }
   ],
   num: '03',
   title: 'Wavering',
@@ -179,7 +179,7 @@ const SW_PROJECTS = [
   hero: 'assets/scb-hero.jpg',
   gallery: ['assets/scb-01.jpg', 'assets/scb-02.jpg', 'assets/scb-03.jpg', 'assets/scb-04.jpg', 'assets/scb-05.jpg', 'assets/scb-06.jpg', 'assets/scb-07.jpg', 'assets/scb-08.jpg'],
   galleryInline: true,
-  videos: ['assets/scb-video-01.mp4', 'assets/scb-video-02.mp4'],
+  videos: [{ drive: '1xqG6kybY2OeLvhO7HFJzlDCBXr2-4rsl' }, { drive: '1oO56OsJ5Slxsf07hH2Uw9dZ1Xi_hMmCE' }],
   num: '09',
   title: 'SCB E-Learning',
   kicker: 'Internal Learning Platform — UI Compositor',
@@ -223,7 +223,7 @@ const SW_PROJECTS = [
   gallery2: ['assets/gmm-b-02.avif', 'assets/gmm-b-01.avif', 'assets/gmm-b-03.avif', 'assets/gmm-b-04.avif', 'assets/gmm-b-05.avif', 'assets/gmm-b-06.avif'],
   videoAboveGallery2: 'https://video.wixstatic.com/video/f86e21_156a9da7272845fc9b3953c7c26a155c/1080p/mp4/file.mp4',
   videoAboveGallery3: 'https://video.wixstatic.com/video/f86e21_7d31e87e23934e2e960e0fa0a276e3e2/1080p/mp4/file.mp4',
-  gallery3: [{ video: 'assets/gmm-chang.mp4' }, 'assets/gmm-c-01.avif', 'assets/gmm-c-02.avif', 'assets/gmm-c-03.avif', 'assets/gmm-c-04.avif', 'assets/gmm-c-05.avif'],
+  gallery3: [{ video: 'https://video.wixstatic.com/video/f86e21_8feca1534d8f4d92ab6b64176dc84ac5/1080p/mp4/file.mp4' }, 'assets/gmm-c-01.avif', 'assets/gmm-c-02.avif', 'assets/gmm-c-03.avif', 'assets/gmm-c-04.avif', 'assets/gmm-c-05.avif'],
   videoAboveGallery2: 'https://video.wixstatic.com/video/f86e21_156a9da7272845fc9b3953c7c26a155c/1080p/mp4/file.mp4',
   num: '11',
   title: 'GMM Grammy — Music Campaigns',
@@ -413,7 +413,7 @@ function CaseDrawer({ project, onClose }) {
               <Section title="Problem">{project.problem}</Section>
               {project.videoAboveGallery2 && <video src={project.videoAboveGallery2} controls playsInline preload="metadata" style={{ marginBottom: 32, width: '100%', aspectRatio: '16 / 9', display: 'block', border: '1px solid var(--sw-rule)', background: '#000' }}></video>}
               {project.gallery2 && <div style={{ marginBottom: 32 }}><DrawerCarousel images={project.gallery2} title={project.title} /></div>}
-              {project.videos && <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, marginBottom: 32 }}>{project.videos.map((v, i) => <BlobVideo key={v} src={v} />)}</div>}
+              {project.videos && <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, marginBottom: 32 }}>{project.videos.map((v, i) => v && v.drive ? <div key={i} style={{ aspectRatio: '16 / 9', width: '100%', border: '1px solid var(--sw-rule)', background: '#000' }}><iframe src={`https://drive.google.com/file/d/${v.drive}/preview`} title={`${project.title} video ${i + 1}`} allow="autoplay; fullscreen" allowFullScreen style={{ width: '100%', height: '100%', border: 0, display: 'block' }}></iframe></div> : <BlobVideo key={v} src={v} />)}</div>}
               {project.youtubeBody && <div style={{ marginBottom: 32, aspectRatio: '16 / 9', width: '100%', border: '1px solid var(--sw-rule)', background: '#000' }}><iframe src={project.youtubeBody} title={`${project.title} teaser`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen style={{ width: '100%', height: '100%', border: 0, display: 'block' }}></iframe></div>}
               {project.midImage2 && <img src={project.midImage2} alt={`${project.title} detail`} style={{ marginBottom: 32, width: '100%', height: 'auto', display: 'block', border: '1px solid var(--sw-rule)' }} />}
               {project.midImage && <img src={project.midImage} alt={`${project.title} detail`} style={{ marginBottom: 32, width: '100%', height: 'auto', display: 'block', border: '1px solid var(--sw-rule)' }} />}

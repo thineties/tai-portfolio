@@ -1595,7 +1595,6 @@ function FooterSection() {
   const ico = { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' };
   return (
     <footer id="contact" style={{ backgroundColor: FT.bg, color: FT.ink, padding: 'clamp(56px, 7vw, 96px) clamp(24px, 5vw, 80px) clamp(24px, 3vw, 40px)', borderTop: `1px solid ${FT.rule}`, position: 'relative', overflow: 'hidden' }}>
-      <img src="assets/footer-wai.png" alt="" aria-hidden="true" className="footer-bg-portrait" style={{ position: 'absolute', right: 'clamp(8px, 4vw, 64px)', bottom: 0, height: '92%', width: 'auto', opacity: 0.28, pointerEvents: 'none', userSelect: 'none', zIndex: 0, maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 55%, rgba(0,0,0,0))', WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 55%, rgba(0,0,0,0))' }} />
       <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 'clamp(32px, 5vw, 72px)', paddingBottom: 'clamp(48px, 6vw, 80px)' }}>
           <section style={{ position: 'relative' }}>
@@ -1651,7 +1650,7 @@ function FooterSection() {
         footer#contact input::placeholder { color: rgba(243,236,231,0.35); }
         footer#contact input:focus { border-color: rgba(243,236,231,0.35) !important; }
         @media (max-width: 1024px) { footer#contact .footer-grid { grid-template-columns: 1fr 1fr !important; } }
-        @media (max-width: 640px) { footer#contact .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; } footer#contact .footer-rail { justify-content: center !important; text-align: center; } footer#contact .footer-bg-portrait { opacity: 0.14 !important; height: 60% !important; right: -10% !important; } }
+        @media (max-width: 640px) { footer#contact .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; } footer#contact .footer-rail { justify-content: center !important; text-align: center; } }
       `}</style>
     </footer>);
 }
